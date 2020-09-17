@@ -57,7 +57,7 @@ public class UIclass extends javax.swing.JFrame {
         resetButton = new java.awt.Button(); 
         leftPanel = new SquarePanelClass();
         
-        setTitle("Laurence Smith's Su Doku Helper");
+        setTitle("Laurence Smith's Sudoku Helper");
         
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
