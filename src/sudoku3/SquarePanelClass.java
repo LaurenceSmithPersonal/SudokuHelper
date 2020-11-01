@@ -43,14 +43,14 @@ public class SquarePanelClass extends JComponent implements MouseInputListener {
         }
         
         // small square lines
-        g.setColor(Color.green);
+        g.setColor(Color.gray);
         for(i = 0; i < 10; i++) {
             g.drawLine(i * 3 * Position.miniSquareSize, 0, i * 3 * Position.miniSquareSize, Position.puzzleSize);
             g.drawLine(0, i * 3 * Position.miniSquareSize, Position.puzzleSize, i * 3 * Position.miniSquareSize);
         }
         
         // large square lines
-        g.setColor(Color.red);
+        g.setColor(Color.black);
         for(i = 0; i < 4; i++) {
             g.drawLine(i * 9 * Position.miniSquareSize, 0, i * 9 * Position.miniSquareSize, Position.puzzleSize);
             g.drawLine(0, i * 9 * Position.miniSquareSize, Position.puzzleSize, i * 9 * Position.miniSquareSize);
@@ -113,7 +113,13 @@ public class SquarePanelClass extends JComponent implements MouseInputListener {
             // which number is it
             ret = 1 + (3 * (ydistInInd / Position.miniSquareSize)) + xdistInInd / Position.miniSquareSize;
             
-            Puzzle.SmallSquare[smallx][smally].IndividualSquare[indx][indy].change(ret);
+            if(SwingUtilities.isLeftMouseButton(e)) {
+            	Puzzle.SmallSquare[smallx][smally].IndividualSquare[indx][indy].change(ret);
+            }
+            else if(SwingUtilities.isRightMouseButton(e)) {
+            	Puzzle.SmallSquare[smallx][smally].IndividualSquare[indx][indy].setSolved(ret);
+            }
+            
             // on;y really want to do this if above is solved - perhaps give it a return value
             Puzzle.removeSolved();
         }

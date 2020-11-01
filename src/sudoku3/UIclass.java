@@ -10,19 +10,27 @@ import javax.swing.*;
 import java.awt.*;
 
 public class UIclass extends javax.swing.JFrame {
-    // Drawing Variables declaration - do not modify
-    private java.awt.Button AddNumButton;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	// Drawing Variables declaration - do not modify
+	private javax.swing.JCheckBox autoCheckBox;
     private java.awt.Button resetButton;
     private javax.swing.JPanel rightPanel;
     private SquarePanelClass leftPanel;
     private javax.swing.JPanel wholePanel;
+    private javax.swing.JLabel instructionLabel;
+    /* -- 01/11/2020 removed this way to add numbers as right clicking easier
     private java.awt.Label rowNumLabel;
     private java.awt.Label colNumLabel;
     private java.awt.Label AddNumLabel;
     private java.awt.TextField rowNumTextField;
     private java.awt.TextField colNumTextField;
     private java.awt.TextField AddNumTextField;
-    private javax.swing.JCheckBox autoCheckBox;
+    private java.awt.Button AddNumButton;
+    -- end 01/11/2020 removed this way to add numbers as right clicking easier */
     
     // Other variables declaration
     //PositionClass Position;
@@ -47,6 +55,8 @@ public class UIclass extends javax.swing.JFrame {
         autoCheckBox = new javax.swing.JCheckBox();
         wholePanel = new javax.swing.JPanel();
         rightPanel = new javax.swing.JPanel();
+        instructionLabel = new javax.swing.JLabel();
+        /* -- 01/11/2020 removed this way to add numbers as right clicking easier
         rowNumLabel = new java.awt.Label();
         rowNumTextField = new java.awt.TextField(1);
         colNumLabel = new java.awt.Label();
@@ -54,6 +64,7 @@ public class UIclass extends javax.swing.JFrame {
         AddNumLabel = new java.awt.Label();
         AddNumTextField = new java.awt.TextField(1);
         AddNumButton = new java.awt.Button();
+        -- end 01/11/2020 removed this way to add numbers as right clicking easier */
         resetButton = new java.awt.Button(); 
         leftPanel = new SquarePanelClass();
         
@@ -82,10 +93,26 @@ public class UIclass extends javax.swing.JFrame {
         
         rightPanel.setBorder(new javax.swing.border.EmptyBorder(new java.awt.Insets(1, 10, 1, 1)));
         
-        autoCheckBox.setText("automatic removal");
+        // Label with instructions
+        
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
+        instructionLabel.setPreferredSize(new java.awt.Dimension(200, 150));
+        instructionLabel.setText("<HTML>Small gray numbers are potential answers. "
+        		+ "Left click on them to remove. "
+        		+ "Right click to set square to that answer."
+        		+ "<P>"
+        		+ "<P>Larger black numbers are solved squares."
+        		+ "</HTML>");
+        rightPanel.add(instructionLabel, gridBagConstraints);
+        
+        autoCheckBox.setText("automatic removal");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         rightPanel.add(autoCheckBox, gridBagConstraints);
@@ -103,7 +130,7 @@ public class UIclass extends javax.swing.JFrame {
             }
         );
         */
-        
+        /* -- 01/11/2020 removed this way to add numbers as right clicking easier
         rowNumLabel.setText("row num");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -153,6 +180,7 @@ public class UIclass extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         rightPanel.add(AddNumButton, gridBagConstraints);
+        -- end 01/11/2020 removed this way to add numbers as right clicking easier */
         
         resetButton.setLabel("reset puzzle");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -180,24 +208,25 @@ public class UIclass extends javax.swing.JFrame {
     
     private void autoRemoveChange(java.awt.event.ItemEvent evt) {
         if(autoCheckBox.isSelected()) {
-	    leftPanel.Puzzle.autoRemove = true;
+        	leftPanel.Puzzle.autoRemove = true;
         }
         else {
             leftPanel.Puzzle.autoRemove = false;
         }
     }
     
+    /*
     private void AddNumButtonAction(java.awt.event.ActionEvent evt) {
         int smallX, smallY, indX, indY, row, col, num;
 //        System.out.println("row " + rowNumTextField.getText());
 //        System.out.println("col " + colNumTextField.getText());
 //        System.out.println("num " + AddNumTextField.getText());
         
-        /* row and columns were initially wrong way round
-        row = (int) Integer.parseInt(rowNumTextField.getText());
-        col = (int) Integer.parseInt(colNumTextField.getText());
-        * used quick and dirty change (swapping them) below
-        */
+        // row and columns were initially wrong way round
+        //row = (int) Integer.parseInt(rowNumTextField.getText());
+        //col = (int) Integer.parseInt(colNumTextField.getText());
+        // used quick and dirty change (swapping them) below
+        //
         
         col = (int) Integer.parseInt(rowNumTextField.getText());
         row = (int) Integer.parseInt(colNumTextField.getText());
@@ -228,6 +257,7 @@ public class UIclass extends javax.swing.JFrame {
             repaint();
         }
     }
+    */
     
     private void resetButtonAction(java.awt.event.ActionEvent evt) {
         leftPanel.Puzzle.reset();
