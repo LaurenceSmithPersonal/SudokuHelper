@@ -209,6 +209,8 @@ public class UIclass extends javax.swing.JFrame {
     private void autoRemoveChange(java.awt.event.ItemEvent evt) {
         if(autoCheckBox.isSelected()) {
         	leftPanel.Puzzle.autoRemove = true;
+        	leftPanel.Puzzle.removeSolved();
+        	repaint();
         }
         else {
             leftPanel.Puzzle.autoRemove = false;
